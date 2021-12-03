@@ -2,7 +2,7 @@ import Navbar from "../Navbar";
 import { useDispatch } from 'react-redux';
 import { GetProdlist } from '../../actions/get_products';
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import  ProductItem  from '../ProductList/ProductItem';
+
 
 const ProductList: React.FC = () => {
     var dispatch = useDispatch();
@@ -24,22 +24,15 @@ const ProductList: React.FC = () => {
                     </thead>
                     <tbody>
                         {products.map(product => {
-                            return
-                            <ProductItem 
-                                id={product.id}
-                                name={product.name}
-                                description={product.description}
-                                onstock={product.onstock}
-                                price={product.price}>
-                            </ProductItem>
-
-                            //  <tr>
-                            //   <td>{product.id}</td>
-                            //   <td>{product.name}</td>
-                            //   <td>{product.description}</td>                  
-                            //   <td>{product.onstock}</td>
-                            //   <td>{product.price}</td>
-                            // </tr>
+                            //виводить чи товар з розпродажу чи ні.
+                            const res:string=product.onstock?"onstock":"stock";
+                            return <tr>
+                              <td>{product.id}</td>
+                              <td>{product.name}</td>
+                              <td>{product.description}</td>                  
+                              <td>{res}</td>
+                              <td>{product.price}</td>
+                            </tr>
                         })}
                     </tbody>
                 </table>

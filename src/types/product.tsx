@@ -7,8 +7,7 @@ export interface Product
     price: number;
 }
 
-export interface ProdState {
-    // products:  Array<Product>;   
+export interface ProdState {   
     products : Product [];
 }
 
@@ -18,8 +17,7 @@ export enum ProductTypes {
 
 interface GetProductsAction {
     type: ProductTypes.GET_PRODUCTS;
-    payload : Product [];
-    // payload : Array<any>
+    payload : Product [];    
 }
 
 export type ProductList = GetProductsAction;
