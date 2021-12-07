@@ -1,11 +1,11 @@
 
 
-const Navbar: React.FC<{ content?: string }> = ({ content }) => {
+const Navbar = () => {
 
     return (<>
         <nav className="navbar navbar-expand-lg " style={{backgroundColor:'#ccf2ff'}} >
             <div className="container-fluid">
-                <a className="navbar-brand "href="/">{content}</a>
+                <a className="navbar-brand "href="/">Home</a>
                 <button className="navbar-toggler" type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
@@ -28,9 +28,7 @@ const Navbar: React.FC<{ content?: string }> = ({ content }) => {
             </div>
         </nav></>)
 }
-Navbar.defaultProps = {
-    content: "Vlasiyk Natalia example"
-}
+
 
 export default Navbar;
 

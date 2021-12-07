@@ -1,4 +1,4 @@
-import Navbar from "../Navbar";
+
 import { useDispatch } from 'react-redux';
 import { GetProdlist } from '../../actions/get_products';
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -9,8 +9,7 @@ const ProductList: React.FC = () => {
     dispatch(GetProdlist());
     const { products } = useTypedSelector(state => state.prod);
     return (
-        <>
-            <Navbar />
+        <>           
             <div className="col-md-10 mx-auto">
                 <table className="table table-bordered table-striped mt-3">
                     <thead className="table-dark">

@@ -1,9 +1,9 @@
-import Navbar from '../Navbar';
+
 
 const HomePage = () => {
     return (
         <>
-        <Navbar/>              
+            <h1>Main window</h1>
         </>
     );
 }
