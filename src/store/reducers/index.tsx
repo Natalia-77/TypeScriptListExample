@@ -1,10 +1,8 @@
 import {combineReducers} from "redux";
-import {prodReducer} from "./prodReducer";
-
-
+import { authReducer } from "../../components/authorize/Login/login_reducer";
 
 export const rootReducer = combineReducers({
-    prod: prodReducer    
+    log: authReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

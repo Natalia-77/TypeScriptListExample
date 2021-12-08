@@ -1,6 +1,5 @@
 export enum AuthActionTypes {
-    LOGIN_AUTH = "LOGIN_AUTH",
-    LOGIN_AUTH_SUCCESS = "LOGIN_AUTH_SUCCESS",
+    LOGIN_AUTH = "LOGIN_AUTH",    
     LOGIN_AUTH_ERROR = "LOGIN_AUTH_ERROR",
     LOGOUT_AUTH = "LOGOUT_AUTH",
 }
@@ -23,21 +22,21 @@ export interface AuthState {
     isAuth: boolean;
 }
 
+export interface ILoginResponse {
+    tokenValue: string,
+    user: IUser
+}
+
+export interface ILoginServerError {
+    email: Array<string>
+    password: Array<string>,
+    error: string
+} 
+
 export interface LoginUserAction{
 
     type : AuthActionTypes.LOGIN_AUTH;
-}
-
-export interface LoginUserSuccess{
-
-    type : AuthActionTypes.LOGIN_AUTH_SUCCESS;
-    payload: IUser;
-}
-
-export interface LoginUserError{
-
-    type : AuthActionTypes.LOGIN_AUTH_ERROR;
-    payload: string
+    payload : IUser;
 }
 
 export interface LogoutUser{
@@ -45,4 +44,4 @@ export interface LogoutUser{
     type : AuthActionTypes.LOGOUT_AUTH;
 }
 
-export type AuthAction=LoginUserAction | LoginUserSuccess |LoginUserError |LogoutUser;
+export type AuthAction=LoginUserAction | LogoutUser;

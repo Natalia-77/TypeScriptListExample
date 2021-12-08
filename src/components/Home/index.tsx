@@ -3,7 +3,7 @@
 const HomePage = () => {
     return (
         <>
-            <h1>Main window</h1>
+            
         </>
     );
 }

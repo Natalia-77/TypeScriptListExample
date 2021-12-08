@@ -1,11 +1,11 @@
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
     return (<>
-        <nav className="navbar navbar-expand-lg " style={{backgroundColor:'#ccf2ff'}} >
+        <nav className="navbar navbar-expand-lg " style={{ backgroundColor: '#ccf2ff' }} >
             <div className="container-fluid">
-                <a className="navbar-brand "href="/">Home</a>
+                <a className="navbar-brand " href="/">Home</a>
                 <button className="navbar-toggler" type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
@@ -21,8 +21,18 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/register">
+                                    Register
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/login">
+                                    Login
+                                </Link>
+                            </li>
+                        </ul>
                     </form>
                 </div>
             </div>
