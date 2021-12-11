@@ -23,7 +23,7 @@ export interface AuthState {
 }
 
 export interface ILoginResponse {
-    tokenValue: string,
+    access_token: string,
     user: IUser
 }
 
@@ -44,4 +44,4 @@ export interface LogoutUser{
     type : AuthActionTypes.LOGOUT_AUTH;
 }
 
-export type AuthAction=LoginUserAction | LogoutUser;
+export type AuthAction = LoginUserAction | LogoutUser;

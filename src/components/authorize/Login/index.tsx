@@ -1,19 +1,48 @@
-import { Form,FormikProvider, useFormik } from "formik";
-import { ILoginModel } from './types';
+import { Form, FormikProvider, useFormik, FormikHelpers } from "formik";
+import React, { useState } from 'react';
+import { ILoginModel, ILoginServerError } from './types';
 import { LoginSchema } from './validation';
 import { InputGroup } from "../../common/Input";
+import { useActions } from '../../../hooks/useActions';
+import { useNavigate } from "react-router";
 
 const Login: React.FC = () => {
+
+    const { LoginCurrentUser } = useActions();
+    const navigator = useNavigate();
 
     const initialValues: ILoginModel = {
         email: "",
         password: ""
     };
+    const [errordata, setErrordata] = useState<string>("");
 
-    const onSubmitHandler = (values: ILoginModel) => {
+    const onSubmitHandler = async (values: ILoginModel, { setFieldError }: FormikHelpers<ILoginModel>) => {
+        console.log("Data to server:", values);
+        try {
 
+            await LoginCurrentUser(values);
+            navigator("/");
 
-    }
+        }
+        catch (ex) {
+            const serverErrors = ex as ILoginServerError;
+            Object.entries(serverErrors).forEach(([key, value]) => {
+                if (Array.isArray(value)) {
+                    let message = "";
+                    value.forEach((item) => {
+                        message += `${item} `;
+                        setFieldError(key, message);
+                    });
+
+                }
+            });
+            if (serverErrors.error) {
+                setErrordata(serverErrors.error);
+            }
+        }
+    };
+
 
     const formik = useFormik(
         {
@@ -30,6 +59,7 @@ const Login: React.FC = () => {
             <div className="col-md-6 offset-md-3">
                 <h1>Login page</h1>
                 <FormikProvider value={formik}>
+                    {errordata && <div className="alert alert-danger">{errordata}</div>}
                     <Form onSubmit={handleSubmit}>
                         <InputGroup
                             field="email"
@@ -49,7 +79,7 @@ const Login: React.FC = () => {
                         />
 
                         <button type="submit" className="btn btn-danger">
-                           Log in
+                            Log in
                         </button>
                     </Form>
                 </FormikProvider>
