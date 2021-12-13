@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
+import { useActions } from "../../../hooks/useActions";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 const Navbar = () => {
 
+    const { user, isAuth } = useTypedSelector((store) => store.log);
+    const {LogoutUser}=useActions();
+    // console.log(user?.email);
     return (<>
         <nav className="navbar navbar-expand-lg " style={{ backgroundColor: '#ccf2ff' }} >
             <div className="container-fluid">
@@ -20,23 +25,41 @@ const Navbar = () => {
                             <a className="nav-link active" aria-current="page" href="/list">List products</a>
                         </li>
                     </ul>
-                    <form className="d-flex">
+                    < form className="d-flex">
+                    {isAuth ? (
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/register">
-                                    Register
+                                <Link className="nav-link" to="/profile">
+                                   {user?.email}
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/login">
-                                    Login
+                                <Link className="nav-link" to="/" onClick={LogoutUser}>
+                                    Logout
                                 </Link>
                             </li>
                         </ul>
-                    </form>
-                </div>
+                    ):(
+                        <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/register">
+                                Register
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login">
+                                Login
+                            </Link>
+                        </li>
+                    </ul>
+
+
+                    )}                      
+
+                </form>
             </div>
-        </nav></>)
+        </div>
+    </nav></>)
 }
 
 

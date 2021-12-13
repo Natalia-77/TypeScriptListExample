@@ -16,7 +16,7 @@ export const authReducer = (state = initialState, action: AuthAction): AuthState
       return {
         ...state,
         isAuth: true,
-        user: action.payload
+        user: { ...action.payload }
       };
     }
 
