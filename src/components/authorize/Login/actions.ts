@@ -36,6 +36,11 @@ export const LoginCurrentUser = (data: ILoginModel) => async (dispatch: Dispatch
 export const AuthUserData = (token: string, dispatch: Dispatch<AuthAction>) => {
     Authtoken(token);
     localStorage.setItem('Token', token);
+   AuthTokenDecode(token,dispatch);
+}
+
+export const AuthTokenDecode=(token: string, dispatch: Dispatch<AuthAction>)=>
+{
     const userdata = jwt.decode(token) as IUser;
     console.log("Userdata", userdata);
     const user: IUser = {
