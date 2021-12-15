@@ -2,7 +2,7 @@ import { Form, FormikProvider, useFormik, FormikHelpers } from "formik";
 import React, { useState } from 'react';
 import { ILoginModel, ILoginServerError } from './types';
 import { LoginSchema } from './validation';
-import { InputGroup } from "../../common/Input";
+import { InputGroup } from "../../../common/InputGroup";
 import { useActions } from '../../../hooks/useActions';
 import { useNavigate } from "react-router";
 
