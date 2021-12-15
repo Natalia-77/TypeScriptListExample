@@ -35,7 +35,7 @@ export const LoginCurrentUser = (data: ILoginModel) => async (dispatch: Dispatch
 
 export const AuthUserData = (token: string, dispatch: Dispatch<any>) => {
     Authtoken(token);
-   // localStorage.setItem('Token', token);
+    localStorage.setItem('Token', token);
     AuthTokenDecode(token, dispatch);
 }
 
