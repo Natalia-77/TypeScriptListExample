@@ -10,13 +10,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "font-awesome/css/font-awesome.min.css";
 import {AuthTokenDecode} from '../src/components/authorize/Login/actions';
 
-
-var token = localStorage.getItem('Token');
-if(token) 
-{
-  AuthTokenDecode(token, store.dispatch); 
- 
-}
 ReactDOM.render( 
   <Provider store={store}>
     <App />

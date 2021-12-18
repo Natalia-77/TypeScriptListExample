@@ -39,6 +39,7 @@ export const AuthUserData = (token: string, dispatch: Dispatch<any>) => {
     AuthTokenDecode(token, dispatch);
 }
 
+
 export const AuthTokenDecode = (token: string, dispatch: Dispatch<AuthAction>) => {
     const userdata = jwt.decode(token) as IUser;
     console.log("Userdata", userdata);
@@ -51,6 +52,10 @@ export const AuthTokenDecode = (token: string, dispatch: Dispatch<AuthAction>) =
         type: AuthActionTypes.LOGIN_AUTH,
         payload: user
     });
+}
+export const UserLoginReset = (token: string) => async (dispatch: Dispatch<AuthAction>) => {
+
+    AuthTokenDecode(token, dispatch);
 }
 
 export const LogoutUser = () => {
