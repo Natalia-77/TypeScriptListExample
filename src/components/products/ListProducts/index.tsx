@@ -54,9 +54,7 @@ const ListProductPage: React.FC = () => {
         if (name || name.length > 0) {
             setQuery("?name=" + name);
             navigator("?name=" + name);
-        }
-        setQuery("?name=" + name);
-        navigator("?name=" + name);
+        }      
 
         if (desc || desc.length > 0) {
             setQuery("?description=" + desc);
@@ -80,7 +78,7 @@ const ListProductPage: React.FC = () => {
                     По назві
                 </button>
                 <input
-                  className="float-end"
+                    className="float-end"
                     id="searchDesc"
                     type="search"
                     placeholder="Search"
