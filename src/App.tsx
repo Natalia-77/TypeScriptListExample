@@ -11,11 +11,11 @@ import { Dispatch } from 'react';
 
 const App: React.FC = () => {
 
-  const { UserLoginReset } = useActions();
-  var token = localStorage.getItem('Token');
-  if (token) {
-    UserLoginReset(token);
-  }
+  // const { UserLoginReset } = useActions();
+  // var token = localStorage.getItem('Token');
+  // if (token) {
+  //   UserLoginReset(token);
+  // }
 
   return (
     <BrowserRouter>
